@@ -39,3 +39,5 @@ let articles = document.querySelectorAll('.article');
 articles.forEach(element => {
   const articleInstance = new Article(element);
 })
+
+//Animation
