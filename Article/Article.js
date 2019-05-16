@@ -8,6 +8,12 @@ class Article {
     this.expandButton = domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = 'expand';
+    // creating a delete button
+    this.title = domElement.querySelector('h2');
+    this.title.style.display = 'inline-block';
+    this.date = domElement.querySelector('.date');
+    domElement.insertBefore(document.createElement('button'), this.date);
+    
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => {
       /* Commenting out this to switch to using animation
@@ -30,6 +36,12 @@ class Article {
         });
         this.expandButton.textContent = 'expand';
       }
+    })
+    // Added a remove button to remove article read
+    this.deleteButton = domElement.querySelector('button');
+    this.deleteButton.textContent = 'Remove';
+    this.deleteButton.addEventListener('click', () => {
+      this.domElement.style.display = 'none';
     })
   }
 
