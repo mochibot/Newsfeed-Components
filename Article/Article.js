@@ -13,7 +13,7 @@ class Article {
     this.title.style.display = 'inline-block';
     this.date = domElement.querySelector('.date');
     domElement.insertBefore(document.createElement('button'), this.date);
-    
+    this.content = domElement.querySelector('p:not(.date)');
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => {
       /* Commenting out this to switch to using animation
@@ -49,7 +49,6 @@ class Article {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
     /*
     While I could just toggle the .article-open class, the css limits the height to 400px and the longer text gets cut off, so I changed the height to 'auto'
-
     this.domElement.classList.toggle('article-open');
     */
     this.domElement.style.height === 'auto' ? this.domElement.style.height = '50px' : this.domElement.style.height = 'auto';
@@ -57,11 +56,8 @@ class Article {
 }
 
 /* START HERE: 
-
 - Select all classes named ".article" and assign that value to the articles variable.  
-
 - With your selection in place, now chain .forEach() on to the articles variable to iterate over the articles NodeList and create a new instance of Article by passing in each article as a parameter to the Article class.
-
 */
 
 let articles = document.querySelectorAll('.article');
@@ -86,3 +82,26 @@ let expand = [
   }
 ]
 
+
+function getArticle() {
+  let testDiv = document.createElement('div');
+  let testTitle = document.createElement('h2');
+  testTitle.textContent = document.getElementById('article-title').value;
+  let testDate = document.createElement('p');
+  testDate.classList.add('date');
+  testDate.textContent = document.getElementById('article-date').value;
+  let testContent = document.createElement('p');
+  testContent.textContent = document.getElementById('article-content').value;
+  testDiv.appendChild(testTitle);
+  testDiv.appendChild(testDate);
+  testDiv.appendChild(testContent);
+  testDiv.classList.add('article');
+  document.querySelector('.articles').appendChild(testDiv);
+}
+
+let submitBtn = document.querySelector('.write-article button');
+submitBtn.addEventListener('click', () => {
+  event.preventDefault();
+  getArticle();
+  document.getElementById('input-form').reset();
+})
