@@ -10,8 +10,26 @@ class Article {
     this.expandButton.textContent = 'expand';
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', () => {
+      /* Commenting out this to switch to using animation
       this.expandArticle();
       this.expandButton.textContent === 'expand' ? this.expandButton.textContent = 'collapse' : this.expandButton.textContent = 'expand';
+      */
+      if (this.expandButton.textContent === 'expand') {
+        this.domElement.animate(expand, {
+          duration: 800,
+          fill: 'forwards',
+          easing: `ease-in-out`
+        });
+        this.expandButton.textContent = 'collapse';
+      } else {
+        this.domElement.animate(expand, {
+          duration: 800,
+          fill: 'forwards',
+          direction: 'reverse',
+          easing: `ease-in-out`
+        });
+        this.expandButton.textContent = 'expand';
+      }
     })
   }
 
@@ -40,4 +58,19 @@ articles.forEach(element => {
   const articleInstance = new Article(element);
 })
 
-//Animation
+//Adding animation to article opening and closing
+let expand = [
+  {
+    height: '50px',
+    background: 'white'
+  },
+  {
+    height: '250px',
+    background: '#c8efbd'
+  },
+  {
+    height: '500px',
+    background: 'white'
+  }
+]
+

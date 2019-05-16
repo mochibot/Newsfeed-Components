@@ -44,7 +44,8 @@ menuButton.addEventListener('click', (event) => {
     duration: 1000,
     fill: 'forwards',
     easing: 'ease-out'
-  });                                                                            menuButton.style.display = 'none';
+  });                                                                            
+  menuButton.style.display = 'none';
   fakeBtn.style.display = 'inline';                                             
 })
 
@@ -55,7 +56,7 @@ fakeBtn.addEventListener('click', (event) => {
     fill: 'forwards',
     direction: 'reverse',
     easing: 'ease-out'
-  });                                                                            menuButton.style.display = 'inline';
+  });                                                                menuButton.style.display = 'inline';
   fakeBtn.style.display = 'none';                                             
 })
 
